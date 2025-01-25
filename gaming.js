@@ -26,6 +26,7 @@ const showWinner = (userWin, userChoice, compChoice) => {
     // console.log("You Win!");
     msg.innerText = `You Win! Your ${userChoice} beats ${compChoice}`;
     msg.style.backgroundColor = "green";
+    createSparkles();
   } else {
     compScore++;
     compScorePara.innerText = compScore;
@@ -67,3 +68,16 @@ choices.forEach((choice) => {
     playGame(userChoice);
   });
 });
+
+const createSparkles = () => {
+  for (let i = 0; i < 30; i++) {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+    document.body.appendChild(sparkle);
+    sparkle.style.left = `${Math.random() * window.innerWidth}px`;
+    sparkle.style.top = `${Math.random() * window.innerHeight}px`;
+    setTimeout(() => {
+      sparkle.remove();
+    }, 1000);
+  }
+};
